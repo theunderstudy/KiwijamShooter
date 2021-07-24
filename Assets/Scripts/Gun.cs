@@ -8,6 +8,8 @@ public class Gun : MonoBehaviour
     public Bullet BulletPrefab;
     public Transform FireLocation;
 
+
+
     [Range(1.0f, 0.05f)]
     public float FireRate = 0.5f;
 
@@ -30,11 +32,18 @@ public class Gun : MonoBehaviour
     private float ReloadTimer = 0;
     private AudioSource GunAudioSource;
 
+    private TopDownCharacterController Player;
+
     private void Awake()
     {
         GunAudioSource = GetComponent<AudioSource>();
         FireRateTimer = FireRate;
         CurrentMagazineCount = MagazineCapacity;
+    }
+    private void Start()
+    {
+        Player = GameManager.instance.player;
+
     }
 
 
@@ -55,9 +64,9 @@ public class Gun : MonoBehaviour
             }
         }
 
-        TryFire();
 
-        transform.Rotate(Vector3.forward * 50 * Time.deltaTime);
+        return;
+
 
         
     }
@@ -87,7 +96,7 @@ public class Gun : MonoBehaviour
         Bullet bullet = Instantiate<Bullet>(BulletPrefab);
         bullet.transform.position = FireLocation.position;
         bullet.transform.rotation = FireLocation.rotation;
-        bullet.Init(BarrelSpeed , BounceCount);
+        bullet.Init(Player.GetComponent<Rigidbody2D>().velocity, BarrelSpeed , BounceCount);
 
         CurrentMagazineCount -= 1;
 

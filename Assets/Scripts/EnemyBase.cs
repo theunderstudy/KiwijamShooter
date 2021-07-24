@@ -15,7 +15,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public int Health = 1;
     public Rigidbody2D RB;
-    protected PlayerController player;
+    protected TopDownCharacterController player;
     protected Collider2D Collider2D;
     [SerializeField] protected AIState CurrentState = AIState.nill;
     public float attackRange;
