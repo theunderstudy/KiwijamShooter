@@ -7,6 +7,11 @@ public class GunRotation : MonoBehaviour
     [SerializeField] Camera cam;
     public Rigidbody2D rb;
 
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
+
     // Update is called once per frame
     void Update()
     {

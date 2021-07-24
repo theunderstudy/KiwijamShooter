@@ -15,7 +15,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public int Health = 1;
     public Rigidbody2D RB;
-    protected GameObject player;
+    protected PlayerController player;
     protected Collider2D Collider2D;
     protected AIState CurrentState = AIState.nill;
 
@@ -27,6 +27,7 @@ public abstract class EnemyBase : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         Collider2D = GetComponent<Collider2D>();
         player = GameManager.instance.player;
+        
     }
 
 
@@ -53,7 +54,6 @@ public abstract class EnemyBase : MonoBehaviour
             return;
         }
 
-        Debug.Log("Hit");
         Health -= 1;
         if (Health <= 0)
         {
@@ -78,4 +78,6 @@ public abstract class EnemyBase : MonoBehaviour
 
         return CurrentState == AIState.dying;
     }
+
+
 }

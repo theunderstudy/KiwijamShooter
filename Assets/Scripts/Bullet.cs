@@ -47,11 +47,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         BounceCount -= 1;
-        if (BounceCount <= 0)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
+       
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -68,6 +64,12 @@ public class Bullet : MonoBehaviour
             Vector3 velocity = lastVelocity;
             Vector3 collisionNormal = collision.GetContact(0).normal;
             RB.velocity = Vector3.Reflect(velocity, collisionNormal);
+        }
+
+        if (BounceCount <= 0)
+        {
+            Destroy(this.gameObject);
+            return;
         }
     }
     
