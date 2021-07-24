@@ -34,8 +34,13 @@ public class TopDownCharacterController : MonoBehaviour
     private float cacheT;
 
 
+    private Gun playerGun;
 
 
+    private void Awake()
+    {
+        playerGun = GetComponentInChildren<Gun>();
+    }
     void Start()
     {
 
@@ -169,4 +174,11 @@ public class TopDownCharacterController : MonoBehaviour
     {
         rb.velocity = velocity * Time.fixedDeltaTime;
     }
+
+    public void UpgradeFireRate()
+    {
+        playerGun.FireRate *= 0.9f;
+    }
+
+
 }

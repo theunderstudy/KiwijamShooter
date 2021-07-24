@@ -64,11 +64,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-
-        return;
-
-
-        
+        return;        
     }
 
 
@@ -93,13 +89,12 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         GunAudioSource.Play();
+
         Bullet bullet = Instantiate<Bullet>(BulletPrefab);
         bullet.transform.position = FireLocation.position;
         bullet.transform.rotation = FireLocation.rotation;
-        bullet.Init(Player.GetComponent<Rigidbody2D>().velocity, BarrelSpeed , BounceCount);
-
+        bullet.Init(BarrelSpeed , BounceCount);
         CurrentMagazineCount -= 1;
-
     }
 
     private void Reload()

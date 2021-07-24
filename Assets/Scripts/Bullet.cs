@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
         lastVelocity = RB.velocity;
     }
 
-    public void Init(Vector2 playerVelocity, float speed, int bounceCount = 1)
+    public void Init(float speed, int bounceCount = 1)
     {
         this.BounceCount = bounceCount;
         //RB.velocity = playerVelocity;
