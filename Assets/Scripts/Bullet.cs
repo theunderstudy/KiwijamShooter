@@ -53,10 +53,22 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyBase enemy = collision.gameObject.GetComponentInParent<EnemyBase>();
+            if (enemy != null)
+            {
+                enemy.GetHit();
+            }
+            RB.velocity = lastVelocity;
+        }
+        else
+        {
 
-        Vector3 velocity = lastVelocity;
-        Vector3 collisionNormal = collision.GetContact(0).normal;
-        RB.velocity = Vector3.Reflect(velocity , collisionNormal);
+            Vector3 velocity = lastVelocity;
+            Vector3 collisionNormal = collision.GetContact(0).normal;
+            RB.velocity = Vector3.Reflect(velocity, collisionNormal);
+        }
     }
     
 }
