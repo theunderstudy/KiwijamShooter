@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class Upgrade : MonoBehaviour
@@ -10,6 +11,8 @@ public abstract class Upgrade : MonoBehaviour
     protected virtual void Awake()
     {
         Collider = GetComponent<Collider2D>();
+        transform.localScale = Vector2.zero;
+        transform.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

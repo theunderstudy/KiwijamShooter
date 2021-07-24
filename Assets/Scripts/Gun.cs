@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
         FireRateTimer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
             TryFire();
         }
