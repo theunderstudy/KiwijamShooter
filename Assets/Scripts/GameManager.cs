@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public TopDownCharacterController player;
 
+    public Upgrade[] UpgradePrefabs;
     void Awake()
     {
         if (instance == null)
@@ -22,6 +23,13 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<TopDownCharacterController>();
 
+    }
+
+    public void SpawnUpgrade(Vector2 position)
+    {
+        Upgrade upgrade = Instantiate(UpgradePrefabs[Random.Range(0 , UpgradePrefabs.Length)]);
+
+        upgrade.transform.position = position;
     }
 
 }

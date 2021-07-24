@@ -179,6 +179,31 @@ public class TopDownCharacterController : MonoBehaviour
     {
         playerGun.FireRate *= 0.9f;
     }
+    public void DowngradeFireRate()
+    {
+        playerGun.FireRate *= 1.1f;
+    }
+
+
+    public void UpgradeBulletSpeed()
+    {
+        playerGun.BarrelSpeed *= 1.1f;
+    }
+
+    
+    public void DowngradeBulletSpeed()
+    {
+        playerGun.BarrelSpeed *= 0.9f;
+    }
+
+    public void UpgradeAmmoCapacity()
+    {
+        playerGun.MagazineCapacity += 1;
+    }
+    public void DowngradeAmmoCapacity()
+    {
+        playerGun.MagazineCapacity -= 1;
+    }
 
 
 }
