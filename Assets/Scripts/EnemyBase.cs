@@ -13,6 +13,7 @@ public enum AIState
 }
 public abstract class EnemyBase : MonoBehaviour
 {
+    public EnemyType type;
     public int Health = 1;
     public Rigidbody2D RB;
     protected TopDownCharacterController player;
@@ -107,6 +108,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
+        GameManager.instance.EnemyDied(type);
         Destroy(gameObject);
 
         if (Random.Range(0 , 5 ) == 2)

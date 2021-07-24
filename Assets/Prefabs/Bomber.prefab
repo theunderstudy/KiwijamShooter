@@ -242,13 +242,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7032996b486e43844b009f23766e46b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   Health: 1
   RB: {fileID: 6135983212749626204}
   CurrentState: 0
-  attackRange: 0.46
+  attackRange: 1.2
   sensoryRange: 11.03
   maxSpeed: 10
   acc: 20
+  blastRadius: 2
+  blastHitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6135983212749626204
 Rigidbody2D:
   serializedVersion: 4

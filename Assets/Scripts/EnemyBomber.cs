@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBomber : EnemyBase
 {
+    public float blastRadius = 2;
+    [SerializeField] LayerMask blastHitLayer;
     
     protected override void Awake()
     {
@@ -18,7 +20,20 @@ public class EnemyBomber : EnemyBase
 
     private void Explode()
     {
-
+        Vector2 pos = transform.position;
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(pos, blastRadius, blastHitLayer);
+        foreach(Collider2D c in hitObjects)
+        {
+            if (c.GetComponent<TopDownCharacterController>())
+            {
+                c.GetComponent<TopDownCharacterController>().GetHit();
+            }
+            else if (c.GetComponent<EnemyBase>())
+            {
+                c.GetComponent<EnemyBase>().GetHit();
+            }
+        }
+        StartDeath();
     }
 
     protected override void Update()
@@ -34,5 +49,11 @@ public class EnemyBomber : EnemyBase
             Attack();
         }
 
+    }
+    protected override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, blastRadius);
     }
 }
