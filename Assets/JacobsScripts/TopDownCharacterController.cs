@@ -36,6 +36,9 @@ public class TopDownCharacterController : MonoBehaviour
 
     private Gun playerGun;
 
+    public List<Upgrade> AttachedUpgrades;
+    public int Health = 10;
+
 
     private void Awake()
     {
@@ -175,35 +178,55 @@ public class TopDownCharacterController : MonoBehaviour
         rb.velocity = velocity * Time.fixedDeltaTime;
     }
 
-    public void UpgradeFireRate()
+    public void GetHit()
     {
-        playerGun.FireRate *= 0.9f;
+        if (AttachedUpgrades.Count > 0)
+        {
+          
+            Upgrade last = AttachedUpgrades[AttachedUpgrades.Count - 1];
+
+            AttachedUpgrades.Remove(last);
+
+            last.DowngradePlayer();
+
+            last.DestroyUpgrade();
+        }
+        else
+        {
+            Health -= 1;
+
+        }
+//
+  //      Debug.Log(Health);
     }
-    public void DowngradeFireRate()
+
+    public void UpgradeFireRate(bool Upgrade)
     {
-        playerGun.FireRate *= 1.1f;
+        playerGun.FireRate *= Upgrade ? 0.9f : 1.1f;
+        UpdateUpgrade(Upgrade);
     }
 
 
-    public void UpgradeBulletSpeed()
+    public void UpgradeBulletSpeed(bool Upgrade)
     {
-        playerGun.BarrelSpeed *= 1.1f;
+        playerGun.BarrelSpeed *= Upgrade ? 1.1f : 0.9f;
+        UpdateUpgrade(Upgrade);
     }
 
     
-    public void DowngradeBulletSpeed()
+
+    public void UpgradeAmmoCapacity(bool Upgrade)
     {
-        playerGun.BarrelSpeed *= 0.9f;
+        playerGun.MagazineCapacity += Upgrade ? 1 : -1;
+        UpdateUpgrade(Upgrade);
     }
 
-    public void UpgradeAmmoCapacity()
+    public void UpdateUpgrade(bool upgrade)
     {
-        playerGun.MagazineCapacity += 1;
-    }
-    public void DowngradeAmmoCapacity()
-    {
-        playerGun.MagazineCapacity -= 1;
+        GameManager.instance.GameStage = AttachedUpgrades.Count;
+        Debug.Log(AttachedUpgrades.Count);
+        Health += upgrade? 1 : -1;        
     }
 
-
+    
 }

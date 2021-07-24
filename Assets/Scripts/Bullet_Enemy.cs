@@ -14,6 +14,10 @@ public class Bullet_Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.player.GetHit();
+        }
         bounces++;
         if (bounces >= maxBounces)
             Destroy(gameObject); // this should probably happen later

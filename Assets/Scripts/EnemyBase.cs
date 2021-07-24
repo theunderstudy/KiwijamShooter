@@ -108,6 +108,11 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
+
+        if (Random.Range(0 , 5 ) == 2)
+        {
+            GameManager.instance.SpawnUpgrade(transform.position);
+        }
     }
 
     public bool Dying() 
