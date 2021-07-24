@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRanged : MonoBehaviour
+public class EnemyRanged : EnemyBase
 {
     public float bulletCooldown;
-    public float range;
     public GameObject bullet;
 
 
-    public void Update()
+
+    protected override void Attack()
     {
-        
+        throw new System.NotImplementedException();
     }
-   
 }
