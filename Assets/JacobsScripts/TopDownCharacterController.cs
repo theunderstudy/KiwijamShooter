@@ -96,7 +96,9 @@ public class TopDownCharacterController : MonoBehaviour
             inputCutoffTolerance = inputCutoff;
             movdur = Mathf.Clamp(movdur + Time.deltaTime, 0, dur2Run);
             acceleration = Mathf.Lerp(0, 1, movdur / dur2Run) * runSpeed;
+
             Vector2 dir = Vector2.MoveTowards(rb.velocity.normalized, input, 0.5f);
+
             movement = Vector2.ClampMagnitude(dir * (walkSpeed + acceleration), runSpeed);
         }
         else

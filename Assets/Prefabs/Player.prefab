@@ -987,7 +987,6 @@ GameObject:
   - component: {fileID: 3471809167011783476}
   - component: {fileID: 3471809167011783482}
   - component: {fileID: 3471809167011783481}
-  - component: {fileID: 3471809167011783480}
   - component: {fileID: 3471809167011783483}
   m_Layer: 0
   m_Name: Player
@@ -1049,33 +1048,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3471809167011783480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471809167011783487}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80996b8ede71e46cf83b0cabdcf7e741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunLocator: {fileID: 3471809167011783476}
-  rb: {fileID: 3471809167011783482}
-  minAcc: 50
-  maxAcc: 10
-  maxSpeed: 5
-  maxAccDur: 0.5
-  maxChangeDirFactor: 10
-  brakingFactor: 0.9
-  input: {x: 0, y: 0}
-  v: {x: 0, y: 0}
-  dir: {x: 0, y: 0}
-  appliedBraking: {x: 0, y: 0}
-  speed: 0
-  angleDiff: 0
-  changeDirFactor: 0
 --- !u!114 &3471809167011783483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,9 +1068,6 @@ MonoBehaviour:
   inputCutoffTolerance: 0
   inputCutoff: 0.1
   dur2Run: 0.7
-  maxSpeed: 0
-  reactivity: 250
-  wallFriciton: 0.6
   friction: 0.97
   input: {x: 0, y: 0}
   movement: {x: 0, y: 0}

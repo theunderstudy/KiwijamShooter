@@ -244,6 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   RB: {fileID: 6135983212749626204}
+  CurrentState: 0
+  attackRange: 0.46
+  sensoryRange: 11.03
   maxSpeed: 10
   acc: 20
 --- !u!50 &6135983212749626204
@@ -282,4 +285,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 0.4

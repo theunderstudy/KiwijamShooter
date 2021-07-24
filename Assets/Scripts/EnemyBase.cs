@@ -17,11 +17,13 @@ public abstract class EnemyBase : MonoBehaviour
     public Rigidbody2D RB;
     protected PlayerController player;
     protected Collider2D Collider2D;
-    protected AIState CurrentState = AIState.nill;
+    [SerializeField] protected AIState CurrentState = AIState.nill;
+    public float attackRange;
+    public float sensoryRange;
 
     public float maxSpeed;
     public float acc;
-
+    protected float distanceToPlayer;
     protected virtual void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -30,9 +32,37 @@ public abstract class EnemyBase : MonoBehaviour
         
     }
 
+    protected virtual void Update() {
+        UpdateAIState();
+    }
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(transform.position, sensoryRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
 
     protected virtual void UpdateAIState()
     {
+        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        if (!Dying())
+        {
+            if (distanceToPlayer < sensoryRange)
+            {
+                if (distanceToPlayer < attackRange)
+                {
+
+                    CurrentState = AIState.attacking;
+                }
+                else
+                {
+                    CurrentState = AIState.moving;
+                }
+            }
+        }
         // Check if in attack range
         // -> atk
         // else move?
@@ -41,8 +71,12 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void MoveToPlayer()
     {
-        // Move to player
-        // Stop at attack range        
+        Vector2 playerPos = GameManager.instance.player.transform.position;
+        Vector2 myPos = transform.position;
+        Vector2 target = playerPos - myPos;
+        Debug.DrawLine(myPos, myPos + target.normalized * 5);
+        RB.AddForce(target.normalized * acc, ForceMode2D.Force);
+        RB.velocity = Vector2.ClampMagnitude(RB.velocity, maxSpeed);
     }
 
     protected abstract void Attack();
@@ -78,6 +112,8 @@ public abstract class EnemyBase : MonoBehaviour
 
         return CurrentState == AIState.dying;
     }
+
+
 
 
 }
