@@ -58,6 +58,8 @@ public class Gun : MonoBehaviour
         TryFire();
 
         transform.Rotate(Vector3.forward * 50 * Time.deltaTime);
+
+        
     }
 
 
