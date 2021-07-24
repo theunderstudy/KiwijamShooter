@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public PlayerController player;
+    public TopDownCharacterController player;
 
     void Awake()
     {
@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        player = FindObjectOfType<PlayerController>();
+
+        player = FindObjectOfType<TopDownCharacterController>();
 
     }
 
