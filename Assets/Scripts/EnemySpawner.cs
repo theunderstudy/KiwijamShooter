@@ -6,7 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public EnemyBase[] EnemyPrefabs;
-    [Range(1.0f, 0.01f)]
+    public float LongestSpawnTime = 2, ShortestSpawnTime = 0.1f;
+    [Range(2.0f, 0.1f)]
     public float TimeBetweenSpawns = 1;
     private float CurrentTime = 0;
     private Collider2D AreaCollider;
@@ -27,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
 
         CurrentTime += Time.deltaTime;
 
+        TimeBetweenSpawns = Mathf.Lerp(LongestSpawnTime , ShortestSpawnTime , GameManager.instance.GameStagePercent());
+
+        //Debug.Log(GameManager.instance.GameStagePercent());
     }
 
     private void SpawnEnemy()

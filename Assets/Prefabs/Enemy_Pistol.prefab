@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 226034851235557668}
   m_Layer: 0
   m_Name: Enemy_Pistol
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,9 +160,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -218,6 +218,7 @@ MonoBehaviour:
   bulletBounces: 1
   bullet: {fileID: 7403725979098870702, guid: 550d8a8705a14447388d3c1e259d86cb, type: 3}
   bulletSpawnPoint: {fileID: 8106226703173596401}
+  strafeStrength: 8
 --- !u!1 &6396856674911711598
 GameObject:
   m_ObjectHideFlags: 0

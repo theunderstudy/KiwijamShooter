@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyRanged : EnemyBase
 {
+
     public float bulletCooldown;
     public float bulletSpeed;
     public int bulletBounces;
@@ -13,10 +14,6 @@ public class EnemyRanged : EnemyBase
     private float bulletTimer;
     private int timesFired;
     private int timesFiredWithoutMoving = 4;
-
-
-
-
 
     protected override void Attack()
     {
@@ -28,14 +25,14 @@ public class EnemyRanged : EnemyBase
             bulletClone.BulletGo();
             bulletTimer = bulletCooldown;
             bulletTimer += Random.Range(bulletCooldown * 0.2f, bulletCooldown * 0.6f);
-            timesFired++;
+            /*timesFired++;
             timesFiredWithoutMoving = Random.Range(1, 6);
             if(timesFired > timesFiredWithoutMoving)
             {
                 timesFired = 0;
 
                 RB.AddForce(transform.up * Mathf.Abs(Random.Range(-5, 5)) * strafeStrength, ForceMode2D.Impulse);
-            }
+            }*/
             
         }
         else

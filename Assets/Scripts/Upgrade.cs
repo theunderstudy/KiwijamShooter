@@ -16,10 +16,13 @@ public abstract class Upgrade : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (transform.parent)
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             UpgradePlayer();
-            AttachToPlayer();
         }   
     }
     protected virtual void AttachToPlayer()
@@ -27,7 +30,17 @@ public abstract class Upgrade : MonoBehaviour
         transform.SetParent(GameManager.instance.player.transform);
         Collider.isTrigger = false;
         gameObject.tag = "Player";
+        GameManager.instance.player.AttachedUpgrades.Add(this);
 
     }
+
+    public void DestroyUpgrade()
+    {
+        Collider.enabled = false;
+        transform.parent = null;
+        gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
     protected abstract void UpgradePlayer();
+    public abstract void DowngradePlayer();
 }

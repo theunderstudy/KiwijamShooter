@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public TopDownCharacterController player;
+    public int GameStage = 1;
+    public int MaxGameStage = 10;
 
     public Upgrade[] UpgradePrefabs;
     void Awake()
@@ -30,6 +32,11 @@ public class GameManager : MonoBehaviour
         Upgrade upgrade = Instantiate(UpgradePrefabs[Random.Range(0 , UpgradePrefabs.Length)]);
 
         upgrade.transform.position = position;
+    }
+
+    public float GameStagePercent()
+    {
+        return Mathf.Clamp01( (float)GameStage / MaxGameStage);
     }
 
 }

@@ -38,10 +38,7 @@ public class Bullet : MonoBehaviour
     public void Init(float speed, int bounceCount = 1)
     {
         this.BounceCount = bounceCount;
-        //RB.velocity = playerVelocity;
         RB.AddForce(transform.up * speed , ForceMode2D.Impulse);
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
