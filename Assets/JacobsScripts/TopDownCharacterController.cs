@@ -29,6 +29,11 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] float knockbackForce = 50;
 
 
+    private Vector2 cachedDir;
+    private float cacheDurationBefore = 0.05f;
+    private float cacheT;
+
+
 
 
     void Start()
@@ -54,6 +59,20 @@ public class TopDownCharacterController : MonoBehaviour
             input.y = 0;
         if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
             input.x = 0;
+
+        if (input.magnitude > 0)
+        {
+            if (cachedDir != input)
+            {
+                if (input.magnitude > 0)
+                    cacheT += Time.deltaTime;
+            }
+            if (cacheT > cacheDurationBefore)
+            {
+                cacheT = 0;
+                cachedDir = input;
+            }
+        }
 
         #endregion
         #region input vs collisions
@@ -97,13 +116,15 @@ public class TopDownCharacterController : MonoBehaviour
             movdur = Mathf.Clamp(movdur + Time.deltaTime, 0, dur2Run);
             acceleration = Mathf.Lerp(0, 1, movdur / dur2Run) * runSpeed;
 
-            Vector2 dir = Vector2.MoveTowards(rb.velocity.normalized, input, 0.5f);
-
-            movement = Vector2.ClampMagnitude(dir * (walkSpeed + acceleration), runSpeed);
+            //Vector2 dir = Vector2.Lerp(rb.velocity.normalized, input, 0.4f);
+            
+            movement = Vector2.ClampMagnitude(input * (walkSpeed + acceleration), runSpeed);
         }
         else
         {
-            movement *= friction; ;
+            movement = cachedDir.normalized * movement.magnitude * friction;
+            //movement *= friction;
+
             if (movement.magnitude < 0.05f) //Cut movement off to avoid crazy floating point values
                 movement = Vector2.zero;
             if (inputCutoffTolerance > 0)
