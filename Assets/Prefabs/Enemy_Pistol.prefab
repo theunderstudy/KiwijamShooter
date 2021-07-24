@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b996be67d5500493a8d0f487c47877bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   Health: 1
   RB: {fileID: 172877726482403299}
   CurrentState: 0
@@ -214,7 +215,7 @@ MonoBehaviour:
   maxSpeed: 5
   acc: 15
   bulletCooldown: 0.8
-  bulletSpeed: 30
+  bulletSpeed: 20
   bulletBounces: 1
   bullet: {fileID: 7403725979098870702, guid: 550d8a8705a14447388d3c1e259d86cb, type: 3}
   bulletSpawnPoint: {fileID: 8106226703173596401}

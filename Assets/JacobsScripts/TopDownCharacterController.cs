@@ -38,6 +38,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public List<Upgrade> AttachedUpgrades;
     public int Health = 10;
+    private bool alive = true;
 
 
     private void Awake()
@@ -51,22 +52,34 @@ public class TopDownCharacterController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         #region input
 
         //Input
-        if (Input.GetKey(KeyCode.W))
-            input.y = 1;
-        if (Input.GetKey(KeyCode.S))
-            input.y = -1;
-        if (Input.GetKey(KeyCode.A))
-            input.x = -1;
-        if (Input.GetKey(KeyCode.D))
-            input.x = 1;
-        if ((!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
-            input.y = 0;
-        if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
-            input.x = 0;
+        if (Health > 0)
+        {
+            if (Input.GetKey(KeyCode.W))
+                input.y = 1;
+            if (Input.GetKey(KeyCode.S))
+                input.y = -1;
+            if (Input.GetKey(KeyCode.A))
+                input.x = -1;
+            if (Input.GetKey(KeyCode.D))
+                input.x = 1;
+            if ((!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
+                input.y = 0;
+            if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)))
+                input.x = 0;
+        }
+        else
+        {
+            input = Vector3.zero;
+            if (alive)
+            {
+                GameManager.instance.GameOver();
+                alive = false;
+            }
+        }
 
         if (input.magnitude > 0)
         {
