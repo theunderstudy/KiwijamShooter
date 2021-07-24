@@ -28,8 +28,11 @@ public abstract class EnemyBase : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         Collider2D = GetComponent<Collider2D>();
+    }
+
+    protected virtual void Start()
+    {
         player = GameManager.instance.player;
-        
     }
 
     protected virtual void Update() {
@@ -105,10 +108,6 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
-        if (Random.Range(0, 5) == 1)
-        {
-            GameManager.instance.SpawnUpgrade(transform.position);
-        }
     }
 
     public bool Dying() 
