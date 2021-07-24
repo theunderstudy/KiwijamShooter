@@ -15,13 +15,18 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public int Health = 1;
     public Rigidbody2D RB;
+    protected GameObject player;
     protected Collider2D Collider2D;
     protected AIState CurrentState = AIState.nill;
+
+    public float maxSpeed;
+    public float acc;
 
     protected virtual void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         Collider2D = GetComponent<Collider2D>();
+        player = GameManager.instance.player;
     }
 
 
