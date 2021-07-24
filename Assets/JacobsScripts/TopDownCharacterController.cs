@@ -13,9 +13,9 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] float inputCutoff = 0.2f;
     [SerializeField] float dur2Run = 0.8f;
     float acceleration = 2;
-    [SerializeField] float maxSpeed = 1;
-    [SerializeField] float reactivity = 0.2f;
-    [SerializeField] float wallFriciton = 0.15f;
+    //[SerializeField] float maxSpeed = 1;
+    //[SerializeField] float reactivity = 0.2f;
+    //[SerializeField] float wallFriciton = 0.15f;
     [SerializeField] float friction = 0.3f;
     [SerializeField] Vector2 input = Vector2.zero;
     [SerializeField] Vector2 movement;

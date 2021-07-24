@@ -244,6 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   RB: {fileID: 6135983212749626204}
+  maxSpeed: 10
+  acc: 20
 --- !u!50 &6135983212749626204
 Rigidbody2D:
   serializedVersion: 4
@@ -259,7 +261,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
