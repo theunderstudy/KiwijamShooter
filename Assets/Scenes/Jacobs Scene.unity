@@ -341,11 +341,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.988}
---- !u!4 &957390764 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8106226703173596401, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-  m_PrefabInstance: {fileID: 5638097487953609524}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252233656
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,42 +832,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 172877726482403299, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 172877726482403299, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: acc
-      value: 15
+      propertyPath: strafeStrength
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 7403725979098870702, guid: 550d8a8705a14447388d3c1e259d86cb, type: 3}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: bulletSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: bulletBounces
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: bulletCooldown
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 226034851235557668, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
-      propertyPath: bulletSpawnPoint
-      value: 
-      objectReference: {fileID: 957390764}
     - target: {fileID: 4136572689256343121, guid: 357306ae2c73640aa88cb701e4b97edc, type: 3}
       propertyPath: m_RootOrder
       value: 8
