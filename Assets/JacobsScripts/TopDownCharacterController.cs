@@ -225,6 +225,11 @@ public class TopDownCharacterController : MonoBehaviour
     {
         playerGun.FireRate *= Upgrade ? 0.95f : 1.05f;
         playerGun.ReloadTime *= Upgrade ? 0.9f : 1.1f;
+
+        if (playerGun.FireRate < 0.05f)
+        {
+            playerGun.FireRate = 0.05f;
+        }
         UpdateUpgrade(Upgrade);
     }
 
@@ -247,6 +252,10 @@ public class TopDownCharacterController : MonoBehaviour
         if (playerGun.BounceCount > 5)
         {
             playerGun.BounceCount = 5;
+        }
+        if (playerGun.BounceCount == 0 )
+        {
+            playerGun.BounceCount = 1;
         }
         UpdateUpgrade(Upgrade);
     }
