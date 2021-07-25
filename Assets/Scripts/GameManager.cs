@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public bool gameStarted = false;
     public GameObject splash;
     public GameObject gameStartCanvas;
+    public Canvas gameCanvas;
     void Awake()
     {
         if (instance == null)
@@ -61,7 +62,16 @@ public class GameManager : MonoBehaviour
                 survivalDur += Time.deltaTime;
         }
     }
+    IEnumerator StartGame()
+    {
+        gameStarted = true;
 
+        gameStartCanvas.SetActive(false);
+        gameCanvas.gameObject.SetActive(true);
+        splash.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        gameState = GameState.playing;
+    }
     public void SpawnUpgrade(Vector2 position , EnemyType type)
     {
         Upgrade prefab = null;
@@ -100,15 +110,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    IEnumerator StartGame()
-    {
-        gameStarted = true;
-
-        gameStartCanvas.SetActive(false);
-        splash.SetActive(false);
-        yield return new WaitForSeconds(0.7f);
-        gameState = GameState.playing;
-    }
+    
 
     public float GameStagePercent()
     {
