@@ -242,7 +242,7 @@ MonoBehaviour:
   RB: {fileID: 172877726482403299}
   CurrentState: 0
   attackRange: 11.9
-  sensoryRange: 18.48
+  sensoryRange: 30
   maxSpeed: 3
   acc: 5
   bulletCooldown: 1.5
