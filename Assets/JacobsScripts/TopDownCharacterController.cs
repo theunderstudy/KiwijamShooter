@@ -249,14 +249,7 @@ public class TopDownCharacterController : MonoBehaviour
     public void UpgradePenetration(bool Upgrade)
     {
         playerGun.BounceCount += Upgrade ? 1 : -1;
-        if (playerGun.BounceCount > 5)
-        {
-            playerGun.BounceCount = 5;
-        }
-        if (playerGun.BounceCount == 0 )
-        {
-            playerGun.BounceCount = 1;
-        }
+       
         UpdateUpgrade(Upgrade);
     }
 
