@@ -231,7 +231,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpgradeBulletSpeed(bool Upgrade)
     {
-        playerGun.BarrelSpeed *= Upgrade ? 1.02f : 0.98f;
+        playerGun.BarrelSpeed *= Upgrade ? 1.04f : 0.96f;
         UpdateUpgrade(Upgrade);
     }
     
@@ -244,6 +244,10 @@ public class TopDownCharacterController : MonoBehaviour
     public void UpgradePenetration(bool Upgrade)
     {
         playerGun.BounceCount += Upgrade ? 1 : -1;
+        if (playerGun.BounceCount > 5)
+        {
+            playerGun.BounceCount = 5;
+        }
         UpdateUpgrade(Upgrade);
     }
 

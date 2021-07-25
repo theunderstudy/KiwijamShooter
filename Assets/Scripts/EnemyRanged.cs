@@ -15,6 +15,14 @@ public class EnemyRanged : EnemyBase
     private int timesFired;
     private int timesFiredWithoutMoving = 4;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        bulletSpeed *= (1 - GameManager.instance.GameStagePercent());
+
+        attackRange *= (1+GameManager.instance.GameStagePercent());
+    }
     protected override void Attack()
     {
         if (bulletTimer < 0)
