@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float survivalScorePerSecond = 1;
     public int score;
     private bool playeralive = true;
-    public Canvas scoreScreen;
+    public ScoreUiManager scoreScreen;
     void Awake()
     {
         if (instance == null)
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         }
 
         player = FindObjectOfType<TopDownCharacterController>();
+        scoreScreen = FindObjectOfType<ScoreUiManager>();
 
     }
     private void Update()
