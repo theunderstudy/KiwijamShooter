@@ -9,23 +9,10 @@ public class ScoreUiManager : MonoBehaviour
     [SerializeField] Text survivedDuration;
     [SerializeField] Text score;
 
-    private void OnEnable()
+    private void Start()
     {
-        killsCount.text = string.Empty;
-        survivedDuration.text = string.Empty;
-        score.text = string.Empty;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        killsCount.text = GameManager.instance.kills.ToString();
+        survivedDuration.text = GameManager.instance.survivalDur.ToString();
+        score.text = GameManager.instance.score.ToString();
     }
 }

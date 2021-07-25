@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public enum EnemyType { nill, bomber, pistol }
 
 public class GameManager : MonoBehaviour
@@ -88,6 +88,21 @@ public class GameManager : MonoBehaviour
         int killScore = kills * killsValue;
         int survivalScore = (int)(survivalDur / survivalScorePerSecond);
         score = killScore + survivalScore;
+    }
+
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 
 
