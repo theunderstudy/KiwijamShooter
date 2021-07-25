@@ -40,9 +40,11 @@ public class AmmoCounter : MonoBehaviour
 
         if (IconTransform.childCount  > PlayerGun.MagazineCapacity)
         {
+            Image remove = BulletIcons[BulletIcons.Count - 1];
             // remove icon
-            BulletIcons[BulletIcons.Count - 1].transform.parent = null;
-            BulletIcons.RemoveAt(BulletIcons.Count - 1) ;
+            remove.transform.parent = null;
+            BulletIcons.Remove(remove) ;
+            Destroy(remove);
         }
 
         for (int i = 0; i < BulletIcons.Count; i++)
