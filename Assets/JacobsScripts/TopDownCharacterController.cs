@@ -39,7 +39,7 @@ public class TopDownCharacterController : MonoBehaviour
     public List<Upgrade> AttachedUpgrades;
     public int Health = 10;
     private bool alive = true;
-
+    public SpriteRenderer sr;
 
     private void Awake()
     {
@@ -191,6 +191,13 @@ public class TopDownCharacterController : MonoBehaviour
         rb.velocity = velocity * Time.fixedDeltaTime;
     }
 
+    IEnumerator HitFlash()
+    {
+        sr.color = Color.black;
+        yield return new WaitForSeconds(0.05f);
+        sr.color = Color.white;
+    }
+
     public void GetHit()
     {
         if (AttachedUpgrades.Count > 0)
@@ -210,8 +217,10 @@ public class TopDownCharacterController : MonoBehaviour
             rb.mass -= 0.5f;
 
         }
-//
-  //      Debug.Log(Health);
+        StartCoroutine(HitFlash());
+
+        //
+        //      Debug.Log(Health);
     }
 
     public void UpgradeFireRate(bool Upgrade)
@@ -241,7 +250,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpdateUpgrade(bool upgrade)
     {
-        GameManager.instance.GameStage = AttachedUpgrades.Count % 5;
+        GameManager.instance.GameStage = AttachedUpgrades.Count;
         Health += upgrade? 1 : -1;  
         rb.mass += upgrade ?  0.5f : -0.5f;
 

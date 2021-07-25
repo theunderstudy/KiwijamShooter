@@ -165,7 +165,7 @@ MonoBehaviour:
   sr: {fileID: 1517770626873981073}
   CurrentState: 0
   attackRange: 1.2
-  sensoryRange: 15
+  sensoryRange: 70
   maxSpeed: 5
   acc: 2
   blastRadius: 4
