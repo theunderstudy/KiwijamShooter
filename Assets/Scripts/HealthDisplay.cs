@@ -43,7 +43,7 @@ public class HealthDisplay : MonoBehaviour
             Image add = Instantiate(HPIcon);
             add.rectTransform.parent = IconTransform;
             add.sprite = HPSprites[Random.Range(0, HPSprites.Length)];
-            add.rectTransform.rotation = Quaternion.Euler( 0,0,Random.Range(-30,30));
+            add.rectTransform.rotation = Quaternion.Euler( 0,0,Random.Range(-180,180));
         }
 
 
