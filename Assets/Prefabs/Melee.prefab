@@ -203,6 +203,6 @@ MonoBehaviour:
   CurrentState: 0
   attackRange: 1.2
   sensoryRange: 35
-  maxSpeed: 10
-  acc: 5
+  maxSpeed: 5
+  acc: 3
   TimeBetweenAttacks: 2

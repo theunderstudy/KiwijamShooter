@@ -93,6 +93,7 @@ public class Gun : MonoBehaviour
         Bullet bullet = Instantiate<Bullet>(BulletPrefab);
         bullet.transform.position = FireLocation.position;
         bullet.transform.rotation = FireLocation.rotation;
+        bullet.transform.localScale = Vector3.Lerp(Vector3.one , Vector3.one*5 , (float)BounceCount / 10);
         bullet.Init(BarrelSpeed , BounceCount);
         CurrentMagazineCount -= 1;
     }
