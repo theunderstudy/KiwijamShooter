@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if (Random.Range(0 , 5) == 1)
+        if (Random.Range(0 , 40) == 1)
         {
             prefab = PenUpgradePrefab;
         }

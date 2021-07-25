@@ -181,6 +181,7 @@ MonoBehaviour:
   BounceCount: 1
   BarrelSpeed: 10
   ReloadTime: 1
+  CurrentMagazineCount: 0
 --- !u!212 &3471809166726623139
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -431,8 +432,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   knockbackForce: 50
+  playerGun: {fileID: 0}
   AttachedUpgrades: []
   Health: 10
+  sr: {fileID: 5169075049553377653}
 --- !u!1 &4560174474899594175
 GameObject:
   m_ObjectHideFlags: 0

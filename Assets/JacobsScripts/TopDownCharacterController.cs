@@ -225,7 +225,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpgradeFireRate(bool Upgrade)
     {
-        playerGun.FireRate *= Upgrade ? 0.85f : 1.15f;
+        playerGun.FireRate *= Upgrade ? 0.95f : 1.05f;
         playerGun.ReloadTime *= Upgrade ? 0.9f : 1.1f;
         UpdateUpgrade(Upgrade);
     }
@@ -233,7 +233,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpgradeBulletSpeed(bool Upgrade)
     {
-        playerGun.BarrelSpeed *= Upgrade ? 1.15f : 0.85f;
+        playerGun.BarrelSpeed *= Upgrade ? 1.05f : 0.95f;
         UpdateUpgrade(Upgrade);
     }
         public void UpgradeAmmoCapacity(bool Upgrade)
@@ -250,7 +250,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpdateUpgrade(bool upgrade)
     {
-        GameManager.instance.GameStage = AttachedUpgrades.Count;
+        GameManager.instance.GameStage = AttachedUpgrades.Count / 2;
         Health += upgrade? 1 : -1;  
         rb.mass += upgrade ?  0.5f : -0.5f;
 

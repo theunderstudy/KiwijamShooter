@@ -199,6 +199,7 @@ MonoBehaviour:
   type: 3
   Health: 1
   RB: {fileID: 6135983212749626204}
+  sr: {fileID: 1517770626873981073}
   CurrentState: 0
   attackRange: 1.2
   sensoryRange: 35

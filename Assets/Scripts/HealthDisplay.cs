@@ -30,18 +30,18 @@ public class HealthDisplay : MonoBehaviour
 
     void UpdateDisplay()
     {
-        if (IconTransform.childCount > Player.Health)
+        if (IconTransform.childCount > Player.Health && IconTransform.childCount> 0)
         {
             // Remove icon
            Transform remove = IconTransform.GetChild(IconTransform.childCount -1);
-            remove.parent = null;
+            remove.SetParent( null);
             Destroy(remove.gameObject);
         }
         if (IconTransform.childCount < Player.Health)
         {
             // Add icon
             Image add = Instantiate(HPIcon);
-            add.rectTransform.parent = IconTransform;
+            add.rectTransform.SetParent(IconTransform);
             add.sprite = HPSprites[Random.Range(0, HPSprites.Length)];
             add.rectTransform.rotation = Quaternion.Euler( 0,0,Random.Range(-180,180));
         }

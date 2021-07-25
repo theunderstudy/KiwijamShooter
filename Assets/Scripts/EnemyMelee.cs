@@ -28,9 +28,17 @@ public class EnemyMelee : EnemyBase
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Attack();
+        }
+    }
     protected override void Update()
     {
         base.Update();
+        CurrentState = AIState.moving;
         AttackTimer += Time.deltaTime;
         if (CurrentState == AIState.moving)
         {

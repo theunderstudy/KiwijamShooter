@@ -42,7 +42,7 @@ public class AmmoCounter : MonoBehaviour
         {
             Image remove = BulletIcons[BulletIcons.Count - 1];
             // remove icon
-            remove.transform.parent = null;
+            remove.transform.SetParent(null);
             BulletIcons.Remove(remove) ;
             Destroy(remove);
         }
