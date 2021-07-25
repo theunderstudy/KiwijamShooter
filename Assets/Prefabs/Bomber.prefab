@@ -165,8 +165,8 @@ MonoBehaviour:
   CurrentState: 0
   attackRange: 1.2
   sensoryRange: 11.03
-  maxSpeed: 10
-  acc: 20
+  maxSpeed: 5
+  acc: 2
   blastRadius: 2
   blastHitLayer:
     serializedVersion: 2
