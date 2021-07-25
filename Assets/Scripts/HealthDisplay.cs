@@ -17,7 +17,7 @@ public class HealthDisplay : MonoBehaviour
         for (int i = 0; i < Player.Health; i++)
         {
             Image add = Instantiate(HPIcon);
-            add.rectTransform.parent = IconTransform;
+            add.rectTransform.SetParent( IconTransform);
         }
     }
 

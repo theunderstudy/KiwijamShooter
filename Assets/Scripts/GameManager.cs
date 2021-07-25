@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public enum EnemyType { nill, bomber, pistol }
+public enum EnemyType { nill, bomber, pistol, melee }
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
     public int GameStage = 1;
     public int MaxGameStage = 10;
 
-    public Upgrade[] UpgradePrefabs;
+    public Upgrade MeleeUpgradePrefab;
+    public Upgrade RangeUpgradePrefab;
+    public Upgrade BomberupgradePrefab;
+    public Upgrade PenUpgradePrefab;
+
     public int kills = 0;
     public int killsValue = 0;
     public float survivalDur = 1;
@@ -43,11 +47,40 @@ public class GameManager : MonoBehaviour
             survivalDur += Time.deltaTime;
     }
 
-    public void SpawnUpgrade(Vector2 position)
+    public void SpawnUpgrade(Vector2 position , EnemyType type)
     {
-        Upgrade upgrade = Instantiate(UpgradePrefabs[Random.Range(0 , UpgradePrefabs.Length)]);
+        Upgrade prefab = null;
+        switch (type)
+        {
+            case EnemyType.nill:
+                break;
+            case EnemyType.bomber:
+                prefab = BomberupgradePrefab;
+
+                break;
+            case EnemyType.pistol:
+                prefab = RangeUpgradePrefab;
+                break;
+            case EnemyType.melee:
+                prefab = MeleeUpgradePrefab;
+                break;
+            default:
+                break;
+        }
+        if (prefab == null)
+        {
+            return;
+        }
+        if (Random.Range(0 , 5) == 1)
+        {
+            prefab = PenUpgradePrefab;
+        }
+
+        Upgrade upgrade = Instantiate(prefab);
 
         upgrade.transform.position = position;
+
+
     }
 
     public float GameStagePercent()
