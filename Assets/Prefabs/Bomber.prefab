@@ -164,13 +164,13 @@ MonoBehaviour:
   RB: {fileID: 6135983212749626204}
   CurrentState: 0
   attackRange: 1.2
-  sensoryRange: 11.03
+  sensoryRange: 15
   maxSpeed: 5
   acc: 2
-  blastRadius: 2
+  blastRadius: 4
   blastHitLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
 --- !u!50 &6135983212749626204
 Rigidbody2D:
   serializedVersion: 4
