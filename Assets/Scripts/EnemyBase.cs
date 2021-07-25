@@ -110,11 +110,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         GameManager.instance.EnemyDied(type);
         Destroy(gameObject);
-
-        if (Random.Range(0 , 5 ) == 2)
-        {
-            GameManager.instance.SpawnUpgrade(transform.position);
-        }
+        GameManager.instance.SpawnUpgrade(transform.position, type);        
     }
 
     public bool Dying() 
