@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<TopDownCharacterController>();
         scoreScreen = FindObjectOfType<ScoreUiManager>();
+        scoreScreen.gameObject.SetActive(false);
 
     }
     private void Update()
