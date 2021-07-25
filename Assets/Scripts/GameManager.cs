@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum EnemyType { nill, bomber, pistol, melee }
+public enum GameState {  idle, playing }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public GameState gameState = GameState.idle;
     public TopDownCharacterController player;
     public int GameStage = 1;
     public int MaxGameStage = 10;
@@ -24,6 +25,9 @@ public class GameManager : MonoBehaviour
     public int score;
     private bool playeralive = true;
     public ScoreUiManager scoreScreen;
+    public bool gameStarted = false;
+    public GameObject splash;
+    public GameObject gameStartCanvas;
     void Awake()
     {
         if (instance == null)
@@ -37,14 +41,25 @@ public class GameManager : MonoBehaviour
         }
 
         player = FindObjectOfType<TopDownCharacterController>();
-        scoreScreen = FindObjectOfType<ScoreUiManager>();
-        scoreScreen.gameObject.SetActive(false);
-
     }
+
     private void Update()
     {
-        if (playeralive)
-            survivalDur += Time.deltaTime;
+        if (gameState == GameState.idle)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!gameStarted)
+                {
+                    StartCoroutine(StartGame());
+                }
+            }
+        }
+        else
+        {
+            if (playeralive)
+                survivalDur += Time.deltaTime;
+        }
     }
 
     public void SpawnUpgrade(Vector2 position , EnemyType type)
@@ -71,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if (Random.Range(0 , 40) == 1)
+        if (Random.Range(0 , 5) == 1)
         {
             prefab = PenUpgradePrefab;
         }
@@ -80,7 +95,19 @@ public class GameManager : MonoBehaviour
 
         upgrade.transform.position = position;
 
+        
 
+
+    }
+
+    IEnumerator StartGame()
+    {
+        gameStarted = true;
+
+        gameStartCanvas.SetActive(false);
+        splash.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        gameState = GameState.playing;
     }
 
     public float GameStagePercent()

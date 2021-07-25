@@ -49,18 +49,21 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        FireRateTimer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if (GameManager.instance.gameState == GameState.playing)
         {
-            TryFire();
-        }
-        if (bReloading)
-        {
-            ReloadTimer += Time.deltaTime;
-            if (ReloadTimer >= ReloadTime)
+            FireRateTimer += Time.deltaTime;
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
-                CurrentMagazineCount = MagazineCapacity;
-                bReloading = false;
+                TryFire();
+            }
+            if (bReloading)
+            {
+                ReloadTimer += Time.deltaTime;
+                if (ReloadTimer >= ReloadTime)
+                {
+                    CurrentMagazineCount = MagazineCapacity;
+                    bReloading = false;
+                }
             }
         }
 

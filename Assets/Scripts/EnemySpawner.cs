@@ -20,17 +20,20 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentTime > TimeBetweenSpawns)
+        if (GameManager.instance.gameState == GameState.playing)
         {
-            SpawnEnemy();
-            CurrentTime = 0;
+            if (CurrentTime > TimeBetweenSpawns)
+            {
+                SpawnEnemy();
+                CurrentTime = 0;
+            }
+
+            CurrentTime += Time.deltaTime;
+
+            TimeBetweenSpawns = Mathf.Lerp(LongestSpawnTime, ShortestSpawnTime, GameManager.instance.GameStagePercent());
+
+            //Debug.Log(GameManager.instance.GameStagePercent());
         }
-
-        CurrentTime += Time.deltaTime;
-
-        TimeBetweenSpawns = Mathf.Lerp(LongestSpawnTime , ShortestSpawnTime , GameManager.instance.GameStagePercent());
-
-        //Debug.Log(GameManager.instance.GameStagePercent());
     }
 
     private void SpawnEnemy()
