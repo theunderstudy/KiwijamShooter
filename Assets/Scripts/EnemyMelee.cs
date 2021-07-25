@@ -17,6 +17,10 @@ public class EnemyMelee : EnemyBase
 
     protected override void Attack()
     {
+        if (Dying())
+        {
+            return;
+        }
         if (AttackTimer>= TimeBetweenAttacks)
         {
             GameManager.instance.player.GetHit();
@@ -37,6 +41,10 @@ public class EnemyMelee : EnemyBase
     }
     protected override void Update()
     {
+        if (Dying())
+        {
+            return;
+        }
         base.Update();
         CurrentState = AIState.moving;
         AttackTimer += Time.deltaTime;
