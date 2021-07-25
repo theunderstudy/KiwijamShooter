@@ -16,6 +16,8 @@ public abstract class EnemyBase : MonoBehaviour
     public EnemyType type;
     public int Health = 1;
     public Rigidbody2D RB;
+    public SpriteRenderer sr;
+    private Sprite sprite;
     protected TopDownCharacterController player;
     protected Collider2D Collider2D;
     [SerializeField] protected AIState CurrentState = AIState.nill;
@@ -91,12 +93,19 @@ public abstract class EnemyBase : MonoBehaviour
         {
             return;
         }
-
+        StartCoroutine(HitFlash());
         Health -= 1;
         if (Health <= 0)
         {
             StartDeath();
         }
+    }
+
+    IEnumerator HitFlash()
+    {
+        sr.color = Color.black;
+        yield return new WaitForSeconds(0.05f);
+        sr.color = Color.white;
     }
 
     protected virtual void StartDeath()
