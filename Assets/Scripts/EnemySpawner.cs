@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyBase newSpawn = Instantiate<EnemyBase>(EnemyPrefabs[Random.Range(0,EnemyPrefabs.Length)]);
         Vector2 extents = AreaCollider.bounds.extents;
-        Vector2 spawnPosition = transform.position + new Vector3(Random.Range(-extents.x, extents.x), Random.Range(-extents.y , extents.y) , 0);
+        Vector2 spawnPosition = AreaCollider.bounds.center + new Vector3(Random.Range(-extents.x, extents.x), Random.Range(-extents.y , extents.y) , 0);
         newSpawn.transform.position = spawnPosition;
     }
 }
