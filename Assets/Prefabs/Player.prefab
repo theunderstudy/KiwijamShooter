@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6239430562033694080}
   - component: {fileID: 2677628506025746660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gameJam_210724_characterHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,9 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 7281417400197604441, guid: 3811edcfa8d4b5c4c9bd54d7b96e4bb6, type: 3}
   FireLocation: {fileID: 3471809166726623138}
-  FireRate: 0.5
+  FireRate: 0.4
   MagazineCapacity: 5
-  BounceCount: 2
+  BounceCount: 1
   BarrelSpeed: 10
   ReloadTime: 1
 --- !u!212 &3471809166726623139
@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 205767802a3e29b488e428e23243cccf, type: 3}
   m_Color: {r: 0.5283019, g: 0.4510502, b: 0.4510502, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -377,7 +377,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -431,6 +431,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   knockbackForce: 50
+  AttachedUpgrades: []
+  Health: 10
 --- !u!1 &4560174474899594175
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +444,7 @@ GameObject:
   - component: {fileID: 2807483939792903145}
   - component: {fileID: 5169075049553377653}
   - component: {fileID: 7571096939721182117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BodySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

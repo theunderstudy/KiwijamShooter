@@ -207,6 +207,7 @@ public class TopDownCharacterController : MonoBehaviour
         else
         {
             Health -= 1;
+            rb.mass -= 0.5f;
 
         }
 //
@@ -237,9 +238,10 @@ public class TopDownCharacterController : MonoBehaviour
     public void UpdateUpgrade(bool upgrade)
     {
         GameManager.instance.GameStage = AttachedUpgrades.Count;
-        Debug.Log(AttachedUpgrades.Count);
-        Health += upgrade? 1 : -1;        
+        Health += upgrade? 1 : -1;  
+        rb.mass += upgrade ?  0.5f : -0.5f;
+
     }
 
-    
+
 }
