@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
     
 
     private float FireRateTimer = 0;
-    private int CurrentMagazineCount;
+    public int CurrentMagazineCount;
     private bool bReloading = false;
     private float ReloadTimer = 0;
     private AudioSource GunAudioSource;

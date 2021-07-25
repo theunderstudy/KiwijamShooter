@@ -34,7 +34,7 @@ public class TopDownCharacterController : MonoBehaviour
     private float cacheT;
 
 
-    private Gun playerGun;
+    public Gun playerGun;
 
     public List<Upgrade> AttachedUpgrades;
     public int Health = 10;

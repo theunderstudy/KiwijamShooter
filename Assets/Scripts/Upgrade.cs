@@ -38,7 +38,7 @@ public abstract class Upgrade : MonoBehaviour
     }
 
     public void DestroyUpgrade()
-    {
+    {   
         Collider.enabled = false;
         transform.parent = null;
         transform.DOScale(Vector3.zero, 0.7f).OnComplete(() => { Destroy(gameObject); }); 
